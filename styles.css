@@ -1,0 +1,45 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100VH;
+    min-width: 100VH;
+    margin: 0;
+
+}
+
+
+.container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.calculator {
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: gray;
+    width: 300px;
+    height: 500px;
+}
+
+.display {
+    display: flex;
+    box-sizing: border-box;
+
+    width: 280px;
+    height: 20%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+
+}
+
+.calculatorItems {
+
+    display: flex;
+    flex-wrap: 1;
+}
