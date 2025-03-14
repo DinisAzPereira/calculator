@@ -50,7 +50,7 @@ const operators = {
     ':': document.getElementById('Divide'), // Botão "÷"
 };
 
-
+    function StoreNumber () {
     for (const [key] of Object.entries(buttons)) {
     
         buttons[key].addEventListener('click', ()=> {
@@ -61,19 +61,25 @@ const operators = {
     
         })
       }
-    
+    }
+
+    function StoreOperator ( ) {
   for (const [key] of Object.entries(operators)) {
     
     operators[key].addEventListener('click', ()=> {
         operator = [key]
-
-
+        number2 = StoreNumber(number2)
 
     })
-  }
 
+    
+  }
+  
+}
   
 
+StoreNumber()
+StoreOperator()
 
 
 function add(a,b) {
