@@ -13,6 +13,7 @@ let storedNumber = "";
 let storedOperator = "";
 let storedNumber2 = "";
 let displayContent = "";
+let total = ""
 
 const display = document.querySelector(".display"); // Display da calculadora
 const clearButton = document.getElementById("Clear"); // Botão "Clear"
@@ -23,6 +24,7 @@ equalButton.addEventListener("click", () => {
   operate();
   console.log("Numero1", storedNumber)
                 console.log("Numero2", storedNumber2)
+                console.log("total: ", total)
 
 });
 
@@ -31,6 +33,8 @@ clearButton.addEventListener("click", () => {
   WipeVariables();
   
 });
+
+
 
 const buttons = {
   7: document.getElementById("7"),
@@ -56,7 +60,6 @@ const operators = {
 
 
 
-
 function StoreNumber(number) {
     if (storedOperator === "") {
       storedNumber += number;
@@ -76,6 +79,8 @@ function StoreNumber(number) {
     function readFirstNumberInput () {
     for (const [key] of Object.entries(buttons)) {
         buttons[key].addEventListener('click', () => {
+           
+
                 StoreNumber(key)
                 
                 console.log("Numero1", storedNumber)
@@ -100,8 +105,13 @@ function StoreNumber(number) {
     readOperatorInput()
 
 
+
 function add(a, b) {
-  let total = a + b;
+        
+
+        total = (a + b).toFixed(2);
+
+    console.log("Total : ", total)
 
   display.textContent = total;
 
@@ -111,7 +121,8 @@ function add(a, b) {
 }
 
 function subtract(a, b) {
-  let total = a - b;
+
+    total = (a - b).toFixed(2);
 
   display.textContent = total;
 
@@ -121,7 +132,7 @@ function subtract(a, b) {
 }
 
 function multiply(a, b) {
-  let total = a * b;
+    total = (a * b).toFixed(2);
 
   display.textContent = total;
 
@@ -131,20 +142,28 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  let total = a / b;
 
-  display.textContent = total;
-
-  WipeVariables();
-  storedNumber = total;
+    if (storedNumber2 == "0") {
+        display.textContent = "Nice try" // function to not divide if the number2 is 0
+    } else {
+        total = (a / b).toFixed(2);
+    
+        display.textContent = total;
+      
+        WipeVariables();
+        storedNumber = total;
+    }
 
 }
 
 
 function operate() {
   if (storedOperator == "+") {
-    return add(storedNumber, storedNumber2);
-  } else if (storedOperator == "-") {
+    return  add(parseFloat(storedNumber), parseFloat(storedNumber2));
+  } 
+
+  
+  else if (storedOperator == "-") {
     return subtract(storedNumber, storedNumber2);
   } else if (storedOperator == "x") {
     return multiply(storedNumber, storedNumber2);
