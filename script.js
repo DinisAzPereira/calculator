@@ -70,7 +70,7 @@ const operators = {
 
     for (const [key] of Object.entries(buttons)) {
         buttons[key].addEventListener('click', () => {
-                StoreNumber = [key]
+                StoreNumber([key])
                 display.textContent = [key]
                 console.log(storedNumber)
         })
@@ -79,8 +79,7 @@ const operators = {
 
     for (const [key] of Object.entries(operators)) {
         operators[key].addEventListener('click', () => {
-            operator = [key]
-            number2 = "4"
+            StoreOperator([key])
         })
     }
 
