@@ -44,11 +44,15 @@ const buttons = {
 };
 
 const operators = {
-  x: document.getElementById("Multiply"), // Botão "×"
+  "x": document.getElementById("Multiply"), // Botão "×"
   "-": document.getElementById("Subtract"), // Botão "-"
   "+": document.getElementById("Add"), // Botão "+"
   ":": document.getElementById("Divide"), // Botão "÷"
 };
+
+
+
+
 
         function StoreNumber(number) {
             storedNumber = number
@@ -57,14 +61,29 @@ const operators = {
         }
 
         function StoreOperator(operator) {
-         storedOperator = operator
+        storedOperator = operator
         return storedOperator;
 
 
         }
 
-StoreNumber(3);
-StoreOperator("+");
+
+    for (const [key] of Object.entries(buttons)) {
+        buttons[key].addEventListener('click', () => {
+                StoreNumber = [key]
+                display.textContent = [key]
+                console.log(storedNumber)
+        })
+    }
+
+
+    for (const [key] of Object.entries(operators)) {
+        operators[key].addEventListener('click', () => {
+            operator = [key]
+            number2 = "4"
+        })
+    }
+
 
 
 
