@@ -3,10 +3,9 @@
 //subtract
 //multiply
 //divide
-
 function WipeVariables() {
     storedOperator = "";
-  storedNumber = "";
+    storedNumber = ""
   storedNumber2 = "";
 }
 
@@ -22,11 +21,15 @@ const equalButton = document.getElementById("Equal");
 
 equalButton.addEventListener("click", () => {
   operate();
+  console.log("Numero1", storedNumber)
+                console.log("Numero2", storedNumber2)
+
 });
 
 clearButton.addEventListener("click", () => {
   display.textContent = null;
   WipeVariables();
+  
 });
 
 const buttons = {
@@ -75,7 +78,9 @@ function StoreNumber(number) {
         buttons[key].addEventListener('click', () => {
                 StoreNumber(key)
                 
-                console.log(storedNumber)
+                console.log("Numero1", storedNumber)
+                console.log("Numero2", storedNumber2)
+
         })
     }
     }
@@ -101,6 +106,8 @@ function add(a, b) {
   display.textContent = total;
 
   WipeVariables();
+  storedNumber = total;
+
 }
 
 function subtract(a, b) {
@@ -109,6 +116,8 @@ function subtract(a, b) {
   display.textContent = total;
 
   WipeVariables();
+  storedNumber = total;
+
 }
 
 function multiply(a, b) {
@@ -117,6 +126,8 @@ function multiply(a, b) {
   display.textContent = total;
 
   WipeVariables();
+  storedNumber = total;
+
 }
 
 function divide(a, b) {
@@ -125,7 +136,10 @@ function divide(a, b) {
   display.textContent = total;
 
   WipeVariables();
+  storedNumber = total;
+
 }
+
 
 function operate() {
   if (storedOperator == "+") {
