@@ -54,12 +54,15 @@ const operators = {
 
 
 
-        function StoreNumber(number) {
-            storedNumber = number
-            return storedNumber
-
-        }
-
+function StoreNumber(number) {
+    if (storedOperator === "") {
+      storedNumber += number;
+      display.textContent = storedNumber;
+    } else {
+      storedNumber2 += number;
+      display.textContent = storedNumber2;
+    }
+  }
         function StoreOperator(operator) {
         storedOperator = operator
         return storedOperator;
@@ -67,23 +70,29 @@ const operators = {
 
         }
 
-
+    function readFirstNumberInput () {
     for (const [key] of Object.entries(buttons)) {
         buttons[key].addEventListener('click', () => {
-                StoreNumber([key])
-                display.textContent = [key]
+                StoreNumber(key)
+                
                 console.log(storedNumber)
         })
     }
-
-
+    }
+    function readOperatorInput() {
     for (const [key] of Object.entries(operators)) {
         operators[key].addEventListener('click', () => {
-            StoreOperator([key])
+            StoreOperator(key)
+            console.log(storedOperator)
+
+
         })
     }
+    }
 
-
+    
+    readFirstNumberInput()
+    readOperatorInput()
 
 
 function add(a, b) {
