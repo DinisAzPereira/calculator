@@ -4,148 +4,110 @@
 //multiply
 //divide
 
-function WipeVariables () {
-    operator = ""
-    number = ""
-    number2 = ""
+function WipeVariables() {
+    storedOperator = "";
+  storedNumber = "";
+  storedNumber2 = "";
 }
 
-let number = "";
-let operator = "";
-let number2 = "";
+let storedNumber = "";
+let storedOperator = "";
+let storedNumber2 = "";
 let displayContent = "";
 
-const display = document.querySelector('.display'); // Display da calculadora
-const clearButton = document.getElementById('Clear'); // Botão "Clear"
-const deleteButton = document.getElementById('Delete'); // Botão "Delete"
-const equalButton = document.getElementById('Equal');
+const display = document.querySelector(".display"); // Display da calculadora
+const clearButton = document.getElementById("Clear"); // Botão "Clear"
+const deleteButton = document.getElementById("Delete"); // Botão "Delete"
+const equalButton = document.getElementById("Equal");
 
-equalButton.addEventListener('click', () => {
-    operate();
-})
+equalButton.addEventListener("click", () => {
+  operate();
+});
 
-clearButton.addEventListener('click', () => {
-    display.textContent = null
-    WipeVariables()
-})
+clearButton.addEventListener("click", () => {
+  display.textContent = null;
+  WipeVariables();
+});
 
 const buttons = {
-    '7': document.getElementById('7'),
-    '8': document.getElementById('8'),
-    '9': document.getElementById('9'),
-    '4': document.getElementById('4'),
-    '5': document.getElementById('5'),
-    '6': document.getElementById('6'),
-    '1': document.getElementById('1'),
-    '2': document.getElementById('2'),
-    '3': document.getElementById('3'),
-    '0': document.getElementById('0'),
-    '.': document.getElementById('Decimal'), // Botão "."
+  7: document.getElementById("7"),
+  8: document.getElementById("8"),
+  9: document.getElementById("9"),
+  4: document.getElementById("4"),
+  5: document.getElementById("5"),
+  6: document.getElementById("6"),
+  1: document.getElementById("1"),
+  2: document.getElementById("2"),
+  3: document.getElementById("3"),
+  0: document.getElementById("0"),
+  ".": document.getElementById("Decimal"), // Botão "."
 };
 
 const operators = {
-    'x': document.getElementById('Multiply'), // Botão "×"
-    '-': document.getElementById('Subtract'), // Botão "-"
-    '+': document.getElementById('Add'), // Botão "+"
-    ':': document.getElementById('Divide'), // Botão "÷"
+  x: document.getElementById("Multiply"), // Botão "×"
+  "-": document.getElementById("Subtract"), // Botão "-"
+  "+": document.getElementById("Add"), // Botão "+"
+  ":": document.getElementById("Divide"), // Botão "÷"
 };
 
-    function StoreNumber () {
-    for (const [key] of Object.entries(buttons)) {
-    
-        buttons[key].addEventListener('click', ()=> {
-            display.textContent = [key]
-            displayContent = [key]
-            number = [key]
-    
-    
-        })
-      }
-    }
+        function StoreNumber(number) {
+            storedNumber = number
+            return storedNumber
 
-    function StoreOperator ( ) {
-  for (const [key] of Object.entries(operators)) {
-    
-    operators[key].addEventListener('click', ()=> {
-        operator = [key]
-        number2 = StoreNumber(number2)
+        }
 
-    })
-
-    
-  }
-  
-}
-  
-
-StoreNumber()
-StoreOperator()
+        function StoreOperator(operator) {
+         storedOperator = operator
+        return storedOperator;
 
 
-function add(a,b) {
- 
-    let total = a + b;
+        }
 
-    display.textContent = total
-
-    WipeVariables()
+StoreNumber(3);
+StoreOperator("+");
 
 
+
+function add(a, b) {
+  let total = a + b;
+
+  display.textContent = total;
+
+  WipeVariables();
 }
 
-function subtract(a,b) {
- 
-    let total = a - b;
+function subtract(a, b) {
+  let total = a - b;
 
-    display.textContent = total
+  display.textContent = total;
 
-    WipeVariables()
-
+  WipeVariables();
 }
 
-function multiply(a,b) {
- 
-    let total = a * b;
+function multiply(a, b) {
+  let total = a * b;
 
-    display.textContent = total
+  display.textContent = total;
 
-    WipeVariables()
-
+  WipeVariables();
 }
 
-function divide(a,b) {
- 
-    let total = a / b;
+function divide(a, b) {
+  let total = a / b;
 
-    display.textContent = total
+  display.textContent = total;
 
-    WipeVariables()
-
+  WipeVariables();
 }
-
-
 
 function operate() {
-
-
-
-    if (operator == "+") {
-        return add(number, number2);
-    } else if (operator == "-"){
-
-        return subtract(number, number2);
-
-    } else if (operator == "x"){
-        return   multiply(number, number2);
-
-    } else if (operator == ":") {
-
-        return   divide(number, number2)
-    } 
-
-
+  if (storedOperator == "+") {
+    return add(storedNumber, storedNumber2);
+  } else if (storedOperator == "-") {
+    return subtract(storedNumber, storedNumber2);
+  } else if (storedOperator == "x") {
+    return multiply(storedNumber, storedNumber2);
+  } else if (storedOperator == ":") {
+    return divide(storedNumber, storedNumber2);
+  }
 }
-
-
-
-
